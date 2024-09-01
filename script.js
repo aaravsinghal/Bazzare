@@ -1,23 +1,32 @@
-// Get references to the button and paragraph elements
-const button = document.getElementById('changeTextButton');
-const paragraph = document.getElementById('text');
+// JavaScript for the carousel
+const prevButton = document.querySelector('.carousel-control.prev');
+const nextButton = document.querySelector('.carousel-control.next');
+const carouselImages = document.querySelector('.carousel-images');
+const images = document.querySelectorAll('.carousel-image');
+let currentIndex = 0;
 
-// Define a function that changes the text content of the paragraph
-function changeText() {
-    paragraph.textContent = 'The text has been changed!';
+function showSlide(index) {
+    const totalImages = images.length;
+    if (index >= totalImages) {
+        currentIndex = 0;
+    } else if (index < 0) {
+        currentIndex = totalImages - 1;
+    } else {
+        currentIndex = index;
+    }
+    const offset = -currentIndex * 100;
+    carouselImages.style.transform = `translateX(${offset}%)`;
 }
 
-// Add an event listener to the button to call changeText when clicked
-button.addEventListener('click', changeText);
-
-// Handle the search form submission
-const searchForm = document.getElementById('searchForm');
-
-searchForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting normally
-    const query = document.getElementById('searchInput').value;
-    if (query) {
-        alert('Search functionality not implemented. Search query: ' + query);
-        // Here you can add code to handle the search query, e.g., sending it to a server.
-    }
+prevButton.addEventListener('click', () => {
+    showSlide(currentIndex - 1);
 });
+
+nextButton.addEventListener('click', () => {
+    showSlide(currentIndex + 1);
+});
+
+// Optional: Auto-slide functionality
+setInterval(() => {
+    showSlide(currentIndex + 1);
+}, 5000); // Change slide every 5 seconds
