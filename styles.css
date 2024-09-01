@@ -21,12 +21,14 @@ header {
 }
 
 .logo {
-  height: 50px; /* Adjust as needed */
+  height: 60px; /* Smaller size for the logo */
+  width: auto;
 }
 
 nav {
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 
 nav ul {
@@ -34,10 +36,11 @@ nav ul {
   padding: 0;
   margin: 0;
   display: flex;
+  gap: 1rem;
 }
 
 nav ul li {
-  margin: 0 15px;
+  margin: 0;
 }
 
 nav ul li a {
@@ -53,7 +56,6 @@ nav ul li a:hover {
 .search-form {
   display: flex;
   align-items: center;
-  margin-left: auto;
 }
 
 .search-form input {
@@ -74,6 +76,58 @@ nav ul li a:hover {
 
 .search-form button:hover {
   background-color: #0056b3;
+}
+
+/* Carousel Styles */
+.carousel-container {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  width: 100%; /* Full width of its container */
+  height: 500px; /* Set a fixed height */
+  margin: 6rem auto; /* Centering and spacing */
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* Full height of the container */
+}
+
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: 100%; /* Full height of the container */
+}
+
+.carousel-image {
+  min-width: 100%; /* Full width of the container */
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the container */
+  display: block;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 1.5rem;
+}
+
+.carousel-control.prev {
+  left: 10px;
+}
+
+.carousel-control.next {
+  right: 10px;
 }
 
 main {
